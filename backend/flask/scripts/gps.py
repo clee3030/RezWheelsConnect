@@ -44,9 +44,9 @@ def process_signals():
         device_position = trilaterate(satellite_positions, pseudoranges)
         return jsonify({
             "device_position": {
-                "x": device_position[0],
-                "y": device_position[1],
-                "z": device_position[2]
+                "latitude": device_position[0],
+                "longitude": device_position[1],
+                "altitude": device_position[2]
             }
         })
     except Exception as e:
