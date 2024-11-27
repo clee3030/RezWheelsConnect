@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const express = require('express');
 const mysql = require('mysql2/promise');
 const app = express();
@@ -26,8 +25,9 @@ app.post('/get_ip', async (req, res) => {
             return res.status(400).json({ error: 'Too many characters in either the user name or password.'});
         }
   
-        console.log("Username: ", user, "\nPassword: ", createHash('sha256').update(password).digest('basee64'));
-        if (user != dbConfig.db_user || password != dbConfig.db_hash) {
+        console.log("Username: ", user, "\nPassword: ", createHash('sha256').update(password).digest('base64'));
+        if (user != dbConfig.db_user || password != Buffer.from(dbConfig.db_hash).toString('base64')) {
+            console.log('Target Hash: ', dbConfig.db_hash)
             return res.status(400).json({ error: 'Invalid username or password, try again.' });
         }
 
@@ -61,7 +61,3 @@ app.post('/get_ip', async (req, res) => {
 app.listen(PORT, () => {
     console.log(`API server is running on http://localhost:${PORT}`);
 });
-=======
-// This script will be used as a tracker, recieves IP addresses from the recieve_ip_addr endpoint, and shares these IP addresses in a list.
-// Note that this will be used to create a safe p2p connection between devices.
->>>>>>> 69b97ba7244f938865f89183a8449e9b4b25fa23
