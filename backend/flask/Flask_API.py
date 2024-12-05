@@ -1,5 +1,4 @@
-import scripts/gps
-import scripts/login
-import assets/
+from scripts import gps
+from assets import *
 
-# TODO: Enter some really important stuff in here.
+gps.start()
