@@ -1,5 +1,5 @@
 import subprocess
-from flask_endpoint import Flask_API
+import flask_endpoint
 
 version = "0.7.1"
 contributors = ["Issac Kee", "Colton Lee", "Ethan Lowrey", "Kenzie Mccabe", "Peyton Dineyazhe"]
